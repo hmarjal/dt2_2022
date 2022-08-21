@@ -25,8 +25,8 @@ package mycpu_pkg;
 				   FMOVA = 4'b0000,
 				   FINC  = 4'b0001,
 				   FADD  = 4'b0010,
-                                   FMUL  = 4'b0011, // non-Mano!
-                                   FSRA  = 4'b0100, // non-Mano!
+				   FMUL  = 4'b0011, // non-Mano!
+				   FSRA  = 4'b0100, // non-Mano!
 				   FSUB  = 4'b0101,
 				   FDEC  = 4'b0110,
 				   FSLA  = 4'b0111, // non-Mano!
