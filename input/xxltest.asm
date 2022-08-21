@@ -1,0 +1,10 @@
+	LDI R0 1
+	LDI R1 2
+	LDI R3 3
+	LDI R4 4
+	LDI R5 5
+	LDI R6 6
+	LDI R7 7
+	XXL
+	HAL
+	

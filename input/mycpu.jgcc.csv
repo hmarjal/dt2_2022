@@ -1,0 +1,56 @@
+CONNECTION_DEFINITION_TABLE
+CONNECTION , clk_to_CU , ,clk , CU, clk
+CONNECTION , CU_to_wen_out, CU, wen_out ,  ,wen_out
+CONNECTION , rst_n_to_CU , ,rst_n , CU, rst_n
+CONNECTION , CU_to_iom_out, CU, iom_out ,  ,iom_out
+CONNECTION , z_to_CU , ,z , CU, z_in
+CONNECTION , CU_to_ps, CU, ps_out ,  ,ps
+CONNECTION , n_to_CU , ,n , CU, n_in
+CONNECTION , CU_to_il, CU, il_out ,  ,il
+CONNECTION , ins_to_CU , ,ins , CU, ins_in
+CONNECTION , CU_to_mm, CU, mm_out ,  ,mm
+CONNECTION , CU_to_md, CU, md_out ,  ,md
+CONNECTION , CU_to_mb, CU, mb_out ,  ,mb
+CONNECTION , CU_to_rw, CU, rw_out ,  ,rw
+CONNECTION , CU_to_rs, CU, rs_out ,  ,rs
+CONNECTION , CU_to_fs, CU, fs_out ,  ,fs
+CONNECTION , clk_to_IR , ,clk , IR, clk
+CONNECTION , IR_to_ia, IR, ia_out ,  ,ia
+CONNECTION , rst_n_to_IR , ,rst_n , IR, rst_n
+CONNECTION , IR_to_ins, IR, ins_out ,  ,ins
+CONNECTION , il_to_IR , ,il , IR, il_in
+CONNECTION , IR_to_iv, IR, iv_out ,  ,iv
+CONNECTION , d_in_to_IR , ,d_in , IR, ins_in
+CONNECTION , clk_to_PC , ,clk , PC, clk
+CONNECTION , PC_to_pca, PC, pc_out ,  ,pca
+CONNECTION , rst_n_to_PC , ,rst_n , PC, rst_n
+CONNECTION , ps_to_PC , ,ps , PC, ps_in
+CONNECTION , ia_to_PC , ,ia , PC, ia_in
+CONNECTION , abus_to_PC , ,abus , PC, ra_in
+CONNECTION , abus_to_FU , ,abus , FU, a_in
+CONNECTION , FU_to_fbus, FU, f_out ,  ,fbus
+CONNECTION , bbus_to_FU , ,bbus , FU, b_in
+CONNECTION , FU_to_z, FU, z_out ,  ,z
+CONNECTION , fs_to_FU , ,fs , FU, fs_in
+CONNECTION , FU_to_n, FU, n_out ,  ,n
+CONNECTION , clk_to_RB , ,clk , RB, clk
+CONNECTION , RB_to_abus, RB, a_out ,  ,abus
+CONNECTION , rst_n_to_RB , ,rst_n , RB, rst_n
+CONNECTION , RB_to_bdat, RB, b_out ,  ,bdat
+CONNECTION , dbus_to_RB , ,dbus , RB, d_in
+CONNECTION , rw_to_RB , ,rw , RB, rw_in
+CONNECTION , rs_to_RB , ,rs , RB, rs_in
+CONNECTION , mm_to_MUXM , ,mm , MUXM, sel_in
+CONNECTION , MUXM_to_a_out, MUXM, m_out ,  ,a_out
+CONNECTION , abus_to_MUXM , ,abus , MUXM, d0_in
+CONNECTION , pca_to_MUXM , ,pca , MUXM, d1_in
+CONNECTION , mb_to_MUXB , ,mb , MUXB, sel_in
+CONNECTION , MUXB_to_bbus, MUXB, m_out ,  ,bbus
+CONNECTION , bdat_to_MUXB , ,bdat , MUXB, d0_in
+CONNECTION , iv_to_MUXB , ,iv , MUXB, d1_in
+CONNECTION , md_to_MUXD , ,md , MUXD, sel_in
+CONNECTION , MUXD_to_dbus, MUXD, m_out ,  ,dbus
+CONNECTION , fbus_to_MUXD , ,fbus , MUXD, d0_in
+CONNECTION , d_in_to_MUXD , ,d_in , MUXD, d1_in
+CONNECTION , io_in_to_MUXD , ,io_in , MUXD, d2_in
+CONNECTION_DEFINITION_TABLE_END
