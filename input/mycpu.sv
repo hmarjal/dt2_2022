@@ -45,6 +45,7 @@ module mycpu
 
   /// SUBMODULES
 
+  // Control unit
   cu CU
   (
   .clk(clk),
@@ -64,6 +65,7 @@ module mycpu
   .fs_out(fs)
   );
 
+  // Instruction register
   ir IR
   (
   .clk(clk),
@@ -75,6 +77,8 @@ module mycpu
   .iv_out(iv)
   );
 
+  // Program counter
+  pc PC
   (
   .clk(clk),
   .rst_n(rst_n),
@@ -84,6 +88,7 @@ module mycpu
   .pc_out(pca)
   );
 
+  // Function unit
   fu FU
   (
   .a_in(abus),
@@ -92,11 +97,9 @@ module mycpu
   .f_out(fbus),
   .z_out(z),
   .n_out(n)
-  );	.a_in(abus)	.f_out(fbus)
-    .b_in(bbus)	.z_out(z)
-    .fs_in(fs)	.n_out(n)
+  );
 
-
+  // Register bank
   rb RB
   (
   .clk(clk),
@@ -108,16 +111,16 @@ module mycpu
   .b_out(bdat)
   );
 
+  // Address mux
   mux_2x16 MUXM
   (
   .sel_in(mm),
   .d0_in(abus),
   .d1_in(pca),
   .m_out(a_out)
-  );	.sel_in(mm)	.m_out(a_out)
-    .d0_in(abus)
-    .d1_in(pca)
+  );
 
+  // B Bus mux
   mux_2x16 MUXB
   (
   .sel_in(mb),
@@ -126,6 +129,7 @@ module mycpu
   .m_out(bbus)
   );
 
+  // Register data input mux
   mux_3x16 MUXD
   (
   .sel_in(md),
