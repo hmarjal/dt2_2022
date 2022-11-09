@@ -11,10 +11,10 @@ module mux_2x16
    always_comb
     begin : mux_logic
         if (sel_in == '0)
-        begin
+        
             m_out = d0_in;
         else
             m_out = d1_in;
-        end
+        
     end
 endmodule
