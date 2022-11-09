@@ -60,7 +60,7 @@ module fu
         n_out = '0;
       end
 
-	// SUBTRACT, OUT = a_in - b_in
+	    // SUBTRACT, OUT = a_in - b_in
       mycpu_pkg::FSUB :
       begin
         f_out = a_in - b_in;
@@ -75,113 +75,99 @@ module fu
         z_out = '1;
       end
 
-	// BITWISE AND, OUT = a_in AND b_in
-	mycpu_pkg::FAND :
-	begin
-		f_out = (a_in & b_in);
-		z_out = ((a_in & b_in) == 0);
-	end
-
-	// BITWISE OR, OUT = a_in OR b_in
-	mycpu_pkg::FOR :
-	begin
-		f_out = (a_in | b_in);
-		z_out = ((a_in | b_in) == 0);
-	end
-	// BITWISE XOR, OUT = a_in XOR b_in
-	mycpu_pkg::FXOR :
-	begin
-		f_out = (a_in ^ b_in);
-		z_out = ((a_in ^ b_in) == 0);
-	end
-
-	// BITWISE NOT, OUT = a_in XOR b_in
-	// z_out = a_in == 0xff 
-	mycpu_pkg::FNOT :
-	begin
-		f_out = ~a_in;
-		z_out = a_in == 0xffff;
-	end
-
-	mycpu_pkg::FMOVB :
-	begin
-		f_out = b_in;
-		z_out = (b_in == 0);
-	end
-
-	mycpu_pkg::FSHR :
-	begin
-		f_out = (b_in >> 1);
-		z_out = ((b_in >> 1) == 0);
-	end
-
-	mycpu_pkg::FSHL :
-	begin
-		f_out = (b_in << 1);
-		z_out = ((b_in << 1) == 0);
-	end
-
-	// BITWISE MULTIPLICATION, IMPLEMENTED USING CARRY SAVE ADDER
-	// TODO: Finish implementation, 
-	mycpu_pkg::FMUL :
-	logic partial_sum[15:0];
-	logic carry_bits[15:0];
-
-	begin
-		begin
-		partial_sum = a_in + b_in;
-		carry_bits = a_in & b_in;
-		end
-		// CHECK FOR OVERFLOW
-		if (carry_bits[15])
-			begin
-				// Carry bit is set, saturate
-				f_out = 16'b0111_1111_1111_1111;
-				z_out = '0;
-				n_out = '0;
-			end
-
-
-			// BITWISE OR, OUT = a_in OR b_in
-			mycpu_pkg::FOR :
-			begin
-				f_out = (a_in | b_in);
-				z_out = ((a_in | b_in) == 0);
-			end
-			// BITWISE XOR, OUT = a_in XOR b_in
-			mycpu_pkg::FXOR :
-			begin
-				f_out = (a_in ^ b_in);
-				z_out = ((a_in ^ b_in) == 0);
-			end
-
-			// BITWISE NOT, OUT = a_in XOR b_in
-			// z_out = a_in == 0xff 
-			mycpu_pkg::FNOT :
-			begin
-				f_out = ~a_in;
-				z_out = (a_in == 4'hFFFF);
-			end
-
-			mycpu_pkg::FMOVB :
-        begin
-          z_out = '0;
-        end
-        
-			mycpu_pkg::FSHL :
-			begin
-				f_out = (b_in << 1);
-				z_out = ((b_in << 1) == 0);
-			end
-
-			mycpu_pkg::FMUL :
+      // BITWISE AND, OUT = a_in AND b_in
+      mycpu_pkg::FAND :
       begin
-        f_out = '0;
+        f_out = (a_in & b_in);
+        z_out = ((a_in & b_in) == 0);
       end
+
+      // BITWISE OR, OUT = a_in OR b_in
+      mycpu_pkg::FOR :
+      begin
+        f_out = (a_in | b_in);
+        z_out = ((a_in | b_in) == 0);
+      end
+      // BITWISE XOR, OUT = a_in XOR b_in
+      mycpu_pkg::FXOR :
+      begin
+        f_out = (a_in ^ b_in);
+        z_out = ((a_in ^ b_in) == 0);
+      end
+
+      // BITWISE NOT, OUT = a_in XOR b_in
+      // z_out = a_in == 0xff 
+      mycpu_pkg::FNOT :
+      begin
+        f_out = ~a_in;
+        z_out = a_in == 0xffff;
+      end
+
+      mycpu_pkg::FMOVB :
+      begin
+        f_out = b_in;
+        z_out = (b_in == 0);
+      end
+
+      mycpu_pkg::FSHR :
+      begin
+        f_out = (b_in >> 1);
+        z_out = ((b_in >> 1) == 0);
+      end
+
+      mycpu_pkg::FSHL :
+      begin
+        f_out = (b_in << 1);
+        z_out = ((b_in << 1) == 0);
+      end
+
+      // TODO: Saturate
+      mycpu_pkg::FMUL :
+      begin
+        f_out = (a_in * b_in);
+      end
+
+
+  // BITWISE OR, OUT = a_in OR b_in
+  mycpu_pkg::FOR :
+  begin
+    f_out = (a_in | b_in);
+    z_out = ((a_in | b_in) == 0);
+  end
+
+  // BITWISE XOR, OUT = a_in XOR b_in
+  mycpu_pkg::FXOR :
+  begin
+    f_out = (a_in ^ b_in);
+    z_out = ((a_in ^ b_in) == 0);
+  end
+
+  // BITWISE NOT, OUT = a_in XOR b_in
+  mycpu_pkg::FNOT :
+  begin
+    f_out = ~a_in;
+    z_out = (a_in == 4'hFFFF);
+  end
+
+  mycpu_pkg::FMOVB :
+    begin
+      z_out = '0;
+    end
+
+  mycpu_pkg::FSHL :
+  begin
+    f_out = (b_in << 1);
+    z_out = ((b_in << 1) == 0);
+  end
+
+
+  // TODO: Finish implementation
+  mycpu_pkg::FMUL :
+  begin
+    f_out = '0;
+  end
 
     endcase : fs
   end : fu_logic
 
-
-   
 endmodule
