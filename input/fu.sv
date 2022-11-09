@@ -49,7 +49,7 @@ module fu
       mycpu_pkg::FDEC :
       begin
         f_out = a_in - 1;
-        z_out = ((f_out & 0xff) == 0);
+        z_out = ((f_out & 2'hFF) == 0);
         n_out = '0;
       end
       // ADD, OUT = A_in + B_in
@@ -64,8 +64,8 @@ module fu
       mycpu_pkg::FSUB :
       begin
         f_out = a_in - b_in;
-        z_out = ((f_out & 0xff) == 0);
-        n_out = '0
+        z_out = ((f_out & 2'hFF) == 0);
+        n_out = '0;
       end
 
       mycpu_pkg::FCLR :
@@ -140,13 +140,45 @@ module fu
 				z_out = '0;
 				n_out = '0;
 			end
-		else
+
+
+			// BITWISE OR, OUT = a_in OR b_in
+			mycpu_pkg::FOR :
 			begin
-			
+				f_out = (a_in | b_in);
+				z_out = ((a_in | b_in) == 0);
+			end
+			// BITWISE XOR, OUT = a_in XOR b_in
+			mycpu_pkg::FXOR :
+			begin
+				f_out = (a_in ^ b_in);
+				z_out = ((a_in ^ b_in) == 0);
+			end
 
+			// BITWISE NOT, OUT = a_in XOR b_in
+			// z_out = a_in == 0xff 
+			mycpu_pkg::FNOT :
+			begin
+				f_out = ~a_in;
+				z_out = (a_in == 4'hFFFF);
+			end
 
-		
-		
+			mycpu_pkg::FMOVB :
+        begin
+          z_out = '0;
+        end
+        
+			mycpu_pkg::FSHL :
+			begin
+				f_out = (b_in << 1);
+				z_out = ((b_in << 1) == 0);
+			end
+
+			mycpu_pkg::FMUL :
+      begin
+        f_out = '0;
+      end
+
     endcase : fs
   end : fu_logic
 
