@@ -49,7 +49,7 @@ module fu
       mycpu_pkg::FDEC :
       begin
         f_out = a_in - 1;
-        z_out = ((f_out & 0xff) == 0);
+        z_out = ((f_out & 2'hFF) == 0);
         n_out = '0;
       end
       // ADD, OUT = A_in + B_in
@@ -64,8 +64,8 @@ module fu
       mycpu_pkg::FSUB :
       begin
         f_out = a_in - b_in;
-        z_out = ((f_out & 0xff) == 0);
-        n_out = '0
+        z_out = ((f_out & 2'hFF) == 0);
+        n_out = '0;
       end
 
       mycpu_pkg::FCLR :
@@ -100,7 +100,7 @@ module fu
 			mycpu_pkg::FNOT :
 			begin
 				f_out = ~a_in;
-				z_out = a_in == 0xffff;
+				z_out = (a_in == 4'hFFFF);
 			end
 
 			mycpu_pkg::FMOVB :
@@ -121,32 +121,11 @@ module fu
 				z_out = ((b_in << 1) == 0);
 			end
 
-			// BITWISE MULTIPLICATION, IMPLEMENTED USING CARRY SAVE ADDER
-			// TODO: Finish implementation, 
 			mycpu_pkg::FMUL :
-			logic partial_sum[15:0];
-			logic carry_bits[15:0];
-			
-			begin
-				begin
-				partial_sum = a_in + b_in;
-				carry_bits = a_in & b_in;
-				end
-				// CHECK FOR OVERFLOW
-				if (carry_bits[15])
-					begin
-						// Carry bit is set, saturate
-						f_out = 16'b0111_1111_1111_1111;
-						z_out = '0;
-						n_out = '0;
-					end
-				else
-					begin
-					
+      begin
+        f_out = '0;
+      end
 
-
-				
-				
     endcase : fs
   end : fu_logic
 
