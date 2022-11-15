@@ -29,7 +29,7 @@ module mycpu
   logic [1:0] md;
   logic mb;
   logic rw;
-  logic [8:0] rs;
+  logic [11:0] rs;
   logic [3:0] fs;
   logic [15:0] pca;
   logic [15:0] ins;
@@ -38,7 +38,7 @@ module mycpu
   logic [15:0] abus;
   logic [15:0] bdat;
   logic [15:0] bbus;
-  logic dbus;
+  logic [15:0] dbus;
   logic [15:0] fbus;
   logic z;
   logic n;

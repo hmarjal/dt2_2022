@@ -12,6 +12,7 @@ module cu
    output logic 	il_out,
    output logic [1:0] 	ps_out,
    output logic 	rw_out,
+   // TODO: Check the correct width for rs_out. 9 bits or 12 bits?
    output logic [11:0] 	rs_out,
    output logic 	mm_out,
    output logic [1:0] 	md_out,
