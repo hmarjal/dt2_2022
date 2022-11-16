@@ -8,8 +8,8 @@ module fu
     input logic     [15:0]  b_in, 
     input logic     [3:0] 	fs_in,
     output logic    [15:0]  f_out, // Function out
-    output logic 	          z_out, // Zero
-    output logic 	          n_out // 1 if MSB is 1
+    output logic 	          z_out, // Zero out. 1 if operation evaluates to 0
+    output logic 	          n_out // 1 if MSB is 1 AND value is signed
   );
 
   fs_t fs;
@@ -18,6 +18,7 @@ module fu
   always_comb
   begin : fu_logic
     case (fs)
+
       // 0
       // FMOVA = 4'b0000
       mycpu_pkg::MOVA :
@@ -43,31 +44,36 @@ module fu
       mycpu_pkg::FADD :
       begin
         f_out = a_in + b_in;
-        z_out = '0;
+        z_out = ( (a_in == 0) && (b_in == 0) );
         n_out = '0;
       end
+
       // 3
       // FMUL = 4'b0011
       mycpu_pkg::FMUL : 
       begin
-        if (a_in * b_in > 4'hFFFF)
+        // temporary variable for multiplication
+        logic [31:0] tmp_total;
+        tmp_total = a_in * b_in;
+        if (tmp_total >= 16'hFFFF)
           // Saturate to maximum value
           begin
-            f_out = 4'hFFFF;
+            f_out = 16'hFFFF;
           end
         else
-          begin
-            f_out = a_in * b_in;
-          end
-        z_out = '0;
-        n_out = '0;
+          f_out = $signed(a_in) * $signed(b_in);
+          z_out = ((a_in == 0) || (b_in == 0));
+          n_out = (($signed(a_in) < 0) ^ ($signed(b_in) < 0));
       end
 
       // 4
-      // FSRA = 4'b0100 non-Mano!
+      // FSRA = 4'b0100
+      // Shift right arithmetic
       mycpu_pkg::FSRA : 
       begin
-        f_out = '0;
+        f_out = $signed(b_in) >>> 1;
+        z_out = (b_in == 16'b0000_0001);
+        n_out = '0;
       end
 
       // 5
@@ -75,33 +81,33 @@ module fu
       mycpu_pkg::FSUB :
       begin
         f_out = a_in - b_in;
-        z_out = (((a_in - b_in) & 'hFF) == 0);
-        n_out = '0;
+        z_out = a_in == b_in;
+        n_out = a_in < b_in;
       end
 
-      // 6
       // FDEC = 4'b0110
       mycpu_pkg::FDEC :
       begin
         f_out = a_in - 1;
-        z_out = (((a_in - 1) & 'hFF) == 0);
+        z_out = a_in == 16'h0001;
         n_out = '0;
       end
-
-      // 7
+      // ARITHMETIC LEFT SHIFT
       // FSLA  = 4'b0111, // non-Mano!
       mycpu_pkg::FSLA :
       begin
-        z_out = '0;
+        $signed(f_out) = $signed(b_in) <<< 1;
+        z_out = b_in == 16'h8000;
+        n_out = (b_in > 16'h7FFF);
       end
 
-      // 8
       // BITWISE AND, OUT = a_in AND b_in
       // FAND  = 4'b1000
       mycpu_pkg::FAND :
       begin
         f_out = (a_in & b_in);
         z_out = ((a_in & b_in) == 0);
+        n_out = '0;
       end
 
       // 9
@@ -111,6 +117,7 @@ module fu
       begin
         f_out = (a_in | b_in);
         z_out = ((a_in | b_in) == 0);
+        n_out = '0;
       end
 
       // 10
@@ -120,6 +127,7 @@ module fu
       begin
         f_out = (a_in ^ b_in);
         z_out = ((a_in ^ b_in) == 0);
+        n_out = 0;
       end
 
       // 11
@@ -128,7 +136,8 @@ module fu
       mycpu_pkg::FNOT :
       begin
         f_out = ~a_in;
-        z_out = (a_in == 4'hFFFF);
+        z_out = (a_in == 16'hFFFF);
+        n_out = '0;
       end
 
       // 12
@@ -137,6 +146,7 @@ module fu
       begin
         f_out = b_in;
         z_out = (b_in == 0);
+        n_out = '0;
       end
 
       // 13
@@ -145,6 +155,7 @@ module fu
       begin
         f_out = (b_in >> 1);
         z_out = ((b_in >> 1) == 0);
+        n_out = '0;
       end
 
       // 14
@@ -153,6 +164,7 @@ module fu
       begin
         f_out = (b_in << 1);
         z_out = ((b_in << 1) == 0);
+        n_out = '0;
       end
 
       // 15
@@ -160,8 +172,8 @@ module fu
       mycpu_pkg::FCLR :
       begin
         f_out = '0;
-        // n_out = '0;
         z_out = '1;
+        n_out = '0;
       end
       
       default :
@@ -170,6 +182,7 @@ module fu
         z_out = '0;
         n_out = '0;
       end
+
     endcase // fs
 
   end : fu_logic
