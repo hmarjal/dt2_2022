@@ -1,1 +1,1 @@
-set_max_delay 5 -to [all_outputs]
+set_max_delay 1.3 -to [all_outputs]
