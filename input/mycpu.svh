@@ -3,7 +3,7 @@
 `timescale 1ns / 1ps
 
 // Uncomment this to enable binding of assertion modules in mycpu_svabind.svh
-`define INCLUDE_ASSERTIONS
+//`define INCLUDE_ASSERTIONS
 
 // Uncomment this to enable reporting functions in mycpu_tb.sv
 //`define ENABLE_CPU_REPORTER

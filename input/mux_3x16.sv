@@ -15,7 +15,7 @@ module mux_3x16
           2'b00 : m_out = d0_in;
           2'b01 : m_out = d1_in;
           2'b10 : m_out = d2_in;
-	  2'b11 : m_out = 0;
+	        2'b11 : m_out = '0;
         endcase
     end
 endmodule

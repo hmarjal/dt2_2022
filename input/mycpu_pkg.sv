@@ -1,10 +1,9 @@
 package mycpu_pkg;
 
 `ifndef SYNTHESIS
-   // To do:  Define your clock period (unit is nanosecond)
-   localparam real CLK_PERIOD = 5.0;
+   // N = 8 => 0.5 ns + (8 * 0.1 ns) = 1.3 ns
+   localparam real CLK_PERIOD = 1.3;
 
-   // To do:  Define the last 4 digits of your student number
    localparam int unsigned mynumber[4] = { 3, 9, 1, 8 };
    
 `endif
