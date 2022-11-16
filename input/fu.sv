@@ -8,8 +8,8 @@ module fu
     input logic     [15:0]  b_in, 
     input logic     [3:0] 	fs_in,
     output logic    [15:0]  f_out, // Function out
-    output logic 	        z_out, // Zero
-    output logic 	        n_out // 1 if MSB is 1
+    output logic 	          z_out, // Zero
+    output logic 	          n_out // 1 if MSB is 1
   );
 
   fs_t fs;

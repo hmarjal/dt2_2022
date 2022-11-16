@@ -40,7 +40,8 @@ program mux_3x16_test
         assert ((sel_in == 2'b00) && (d0_in == m_out) ||
                 (sel_in == 2'b01) && (d1_in == m_out) ||
                 (sel_in == 2'b10) && (d2_in == m_out) ||
-                (sel_in == 2'b11) && (d0_in == '0))
+                (sel_in == 2'b11) && (m_out == '0))
+
         else
             begin
                 $error("mux_3x16 tests failed!");
