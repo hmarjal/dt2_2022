@@ -6,8 +6,8 @@
 #set DESIGN_NAME "mux_2x16"
 #set DESIGN_NAME "mux_3x16"
 #set DESIGN_NAME "fu"
-set DESIGN_NAME "ir"
-#set DESIGN_NAME "pc"
+#set DESIGN_NAME "ir"
+set DESIGN_NAME "pc"
 #set DESIGN_NAME "rb"
 #set DESIGN_NAME "cu"
 
@@ -89,13 +89,13 @@ switch $DESIGN_NAME {
 			       "input/cu.sv"        "input/cu_svamod.sv" \
 			       "input/mycpu.sv"     "input/mycpu_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/mycpu_tb.sv"      "input/mycpu_test.sv" \
 			      }
 	set SYNTHESIS_DONT_UNGROUP { "MUXM" "MUXD" "MUXB" "RB" "FU" "CU" "IR" "PC" }
 	set SDC_FILE            "input/mycpu.sdc"
-	set QUESTA_INIT_FILE    "input/questa_seq.tcl"    ; # Initialization file for Questa tools		
+	set QUESTA_INIT_FILE    "input/questa_seq.tcl"    ; # Initialization file for Questa tools
     }
 
 
@@ -105,14 +105,14 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/mux_2x16.sv"  "input/mux_2x16_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/mux_2x16_test.sv" "input/mux_2x16_tb.sv" \
 			      }
 	set SDC_FILE            "input/tc_comb.sdc"
 	set CLOCK_NAMES          {  }
 	set RESET_NAMES          {  }
-	set QUESTA_INIT_FILE    "input/questa_comb.tcl"		
+	set QUESTA_INIT_FILE    "input/questa_comb.tcl"
     }
 
 
@@ -122,11 +122,11 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/mux_3x16.sv"  "input/mux_3x16_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/mux_3x16_test.sv" "input/mux_3x16_tb.sv" \
 			      }
-	set SDC_FILE            "input/tc_comb.sdc"	
+	set SDC_FILE            "input/tc_comb.sdc"
 	set CLOCK_NAMES          {  }
 	set RESET_NAMES          {  }
 	set QUESTA_INIT_FILE    "input/questa_comb.tcl"
@@ -139,11 +139,11 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/fu.sv"        "input/fu_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/fu_test.sv"       "input/fu_tb.sv" \
 			      }
-	set SDC_FILE            "input/tc_comb.sdc"		
+	set SDC_FILE            "input/tc_comb.sdc"
 	set CLOCK_NAMES          {  }
 	set RESET_NAMES          {  }
 	set QUESTA_INIT_FILE    "input/questa_comb.tcl"
@@ -156,11 +156,11 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/ir.sv"        "input/ir_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/ir_test.sv"       "input/ir_tb.sv" \
 			      }
-	
+
 	set SDC_FILE            "input/tc_seq.sdc"
 	set QUESTA_INIT_FILE    "input/questa_seq.tcl"
 
@@ -173,12 +173,12 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/pc.sv"        "input/pc_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/pc_test.sv"       "input/pc_tb.sv" \
 			      }
 	set SDC_FILE            "input/tc_seq.sdc"
-	set QUESTA_INIT_FILE    "input/questa_seq.tcl"	
+	set QUESTA_INIT_FILE    "input/questa_seq.tcl"
     }
 
 
@@ -188,12 +188,12 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/rb.sv"        "input/rb_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/rb_test.sv"       "input/rb_tb.sv" \
 			      }
 	set SDC_FILE            "input/tc_seq.sdc"
-	set QUESTA_INIT_FILE    "input/questa_seq.tcl"	
+	set QUESTA_INIT_FILE    "input/questa_seq.tcl"
     }
 
 
@@ -203,12 +203,12 @@ switch $DESIGN_NAME {
 			       "input/mycpu_pkg.sv" \
 			       "input/cu.sv"        "input/cu_svamod.sv" \
 			   }
-	
+
 	set TESTBENCH_FILES { \
 				  "input/cu_pkg.sv" "input/cu_test.sv"       "input/cu_tb.sv" \
 			      }
 	set SDC_FILE            "input/tc_seq.sdc"
-	set QUESTA_INIT_FILE    "input/questa_seq.tcl"	
+	set QUESTA_INIT_FILE    "input/questa_seq.tcl"
     }
 
 }

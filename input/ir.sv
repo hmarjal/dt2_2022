@@ -5,18 +5,18 @@ import mycpu_pkg::*;
 module ir
   (
    input logic 	       clk,       // Rising-edge sensitive clock signal input.
-   input logic 	       rst_n,     // Active-low, asynchronous reset signal input.	
+   input logic 	       rst_n,     // Active-low, asynchronous reset signal input.
    input logic 	       il_in,     // Instruction load enable.
    input logic  [15:0] ins_in,    // Instruction word input.
-   output logic [15:0] ins_out,   // Instruction register output.	
+   output logic [15:0] ins_out,   // Instruction register output.
    output logic [15:0] ia_out,    // Instruction register (IR) immediate branch address extended to 16-bit signed 2's complement format.
    output logic [15:0] iv_out     // Instruction register (IR) immediate value extended to 16-bit unsigned format.
    );
 
   // internal register for Instruction register
-  reg [15:0] ir_r;
+  logic [15:0] ir_r;
   // internal register for Instruction vector
-  reg [15:0] iv;
+  logic [15:0] iv;
   // internal register for Immediate address
   reg signed [15:0] ia;
 
@@ -32,7 +32,7 @@ module ir
         // if il_in == '1, ins_in is loaded into ir_r on the rising edge of clk
         if (il_in == '1)
           begin
-            ir_r = ins_in;
+            ir_r <= ins_in;
           end
           // otherwise ir_r retains its state
         else
@@ -63,7 +63,7 @@ module ir
   assign ia_out = ia;
   // iv_driver
   assign iv_out = iv;
-   
-   
+
+
 endmodule
 
