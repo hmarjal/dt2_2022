@@ -5,7 +5,7 @@ import mycpu_pkg::*;
 module fu
   (
     input logic     [15:0]  a_in,
-    input logic     [15:0]  b_in, 
+    input logic     [15:0]  b_in,
     input logic     [3:0] 	fs_in,
     output logic    [15:0]  f_out, // Function out
     output logic 	          z_out, // Zero out. 1 if operation evaluates to 0
@@ -38,7 +38,7 @@ module fu
         z_out = '0;
         n_out = '0;
       end
-    
+
       // 2
       // FADD = 4'b0010
       mycpu_pkg::FADD :
@@ -50,7 +50,7 @@ module fu
 
       // 3
       // FMUL = 4'b0011
-      mycpu_pkg::FMUL : 
+      mycpu_pkg::FMUL :
       begin
         // temporary variable for multiplication
         logic [31:0] tmp_total;
@@ -69,7 +69,7 @@ module fu
       // 4
       // FSRA = 4'b0100
       // Shift right arithmetic
-      mycpu_pkg::FSRA : 
+      mycpu_pkg::FSRA :
       begin
         f_out = $signed(b_in) >>> 1;
         z_out = (b_in == 16'b0000_0001);
@@ -175,7 +175,7 @@ module fu
         z_out = '1;
         n_out = '0;
       end
-      
+
       default :
       begin
         f_out = '0;
