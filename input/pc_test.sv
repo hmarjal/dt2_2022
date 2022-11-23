@@ -15,8 +15,22 @@ program pc_test
    );
 
    initial
-     begin
-
+     begin : test_program_counter
+     
+       $info("T1: Reset Test");
+       ps_in = 2'b00;
+       ia_in = 16'b00000000_00000000;
+       ra_in = 16'b00000000_00000000;
+       wait (rst_n);
+       @(negedge clk);
+      // assert (pc_r == '0)
+      // else $error("Reset test failed!");     
+	
+	    $info("T2: Program Counter Test");
+	    ps_in = 2'b00;
+	    @(negedge clk);
+	    assert (pc_out == '0);
+	    
 	
 	$finish;	
      end   
