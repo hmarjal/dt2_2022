@@ -13,6 +13,7 @@ module pc
    );
 
 logic [15:0] pc_r;
+ps_t ps_op;
 assign ps_op = pc_t'(ps_in);
 
 always_ff @(posedge clk or negedge rst_n)
