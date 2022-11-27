@@ -28,7 +28,8 @@ program pc_test
       @(negedge clk);
 
 	    $info("T2: PC_INC Test");
-      logic [15:0] test_value = pc_out;
+      logic [15:0] test_value;
+      test_value = pc_out;
 	    ps_in = mycpu_pkg::PC_INC;
 	    @(negedge clk);
 	    assert (pc_out == test_value + 1)
