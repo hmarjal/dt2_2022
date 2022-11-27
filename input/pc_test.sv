@@ -25,7 +25,6 @@ program pc_test
        @(negedge clk);
       assert (pc_out == '0)
       else $error("Reset test failed!");
-      @(negedge clk);
 
 	    $info("T2: PC_INC Test");
       test_value = pc_out;
@@ -33,14 +32,12 @@ program pc_test
 	    @(negedge clk);
 	    assert (pc_out == test_value + 1)
       else $error("Increment test failed");
-      @(negedge clk);
 
       $info("T3: PC_NOP Test");
       ps_in = mycpu_pkg::PC_NOP;
       @(negedge clk);
       assert (pc_out == test_value)
       else $error("NO-OP test failed");
-      @(negedge clk);
 
       $info("T4: PC_BRA Test");
       ia_in = 16'hAA55;
@@ -48,7 +45,6 @@ program pc_test
       @(negedge clk);
       assert (pc_out == ($signed(16'hAA55) + 1))
       else $error("Branching test failed");
-      @(negedge clk);
 
       $info("T5: PC_JMP Test");
       ra_in = 16'h55AA;
@@ -56,7 +52,6 @@ program pc_test
       @(negedge clk);
       assert (pc_out == test_value)
       else $error("Jump test failed");
-      @(negedge clk);
 	  $finish;
   end
 
