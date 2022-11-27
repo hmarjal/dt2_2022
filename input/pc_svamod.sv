@@ -10,16 +10,16 @@ module pc_svamod
    input logic 	      rst_n,
    input logic [1:0]  ps_in,
    input logic [15:0] ia_in,
-   input logic [15:0] ra_in, 
+   input logic [15:0] ra_in,
    input logic [15:0] pc_out,
-   input logic [15:0] pc_r         
+   input logic [15:0] pc_r
    );
-   
+
    `xcheck(ps_in);
    `xcheck(ia_in);
    `xcheck(ra_in);
    `xcheck(pc_out);
-   `xcheck(pc_r);   
+   `xcheck(pc_r);
    `resetcheck(pc_r, 0);
 
    property f_pc_nop;
@@ -53,7 +53,7 @@ module pc_svamod
 
    af_pc_jmp: assert property(f_pc_jmp) else $error("Program counter was not set correctly when ps_in == PC_JMP");
    cf_pc_jmp: cover property(f_pc_jmp);
-   
+
 endmodule
 
 
