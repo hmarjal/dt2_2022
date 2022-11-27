@@ -43,15 +43,15 @@ program pc_test
       @(negedge clk);
 
       $info("T4: PC_BRA Test");
-      ia_in = 16'hFF55FF55;
+      ia_in = 16'hAA55;
       ps_in = mycpu_pkg::PC_BRA;
       @(negedge clk);
-      assert (pc_out == ($signed(16'hFF55FF55) + 1))
+      assert (pc_out == ($signed(16'hAA55) + 1))
       else $error("Branching test failed");
       @(negedge clk);
 
       $info("T5: PC_JMP Test");
-      ra_in = 16'h55AA55AA55;
+      ra_in = 16'h55AA;
       test_value += ra_in;
       @(negedge clk);
       assert (pc_out == test_value)
