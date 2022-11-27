@@ -21,7 +21,7 @@ module pc_tb;
         clk = '1;
       else
         clk = '0;
-      #CLK_PERIOD
+      #CLK_PERIOD;
     end : clock_generator
 
     initial
