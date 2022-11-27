@@ -38,7 +38,7 @@ program pc_test
       $info("T3: PC_NOP Test");
       ps_in = mycpu_pkg::PC_NOP;
       @(negedge clk);
-      assert (pc_op == test_value);
+      assert (pc_op == test_value)
       else $error("NO-OP test failed");
       @(negedge clk);
 
@@ -46,7 +46,7 @@ program pc_test
       ia_in = 16'hFF55FF55;
       ps_in = mycpu_pkg::PC_BRA;
       @(negedge clk);
-      assert (pc_op == ($signed(16'hFF55FF55) + 1));
+      assert (pc_op == ($signed(16'hFF55FF55) + 1))
       else $error("Branching test failed");
       @(negedge clk);
 
