@@ -13,8 +13,8 @@ module pc
    );
 
 logic [15:0] pc_r;
-ps_t ps_op;
-assign ps_op = pc_t'(ps_in);
+pc_t pc_op;
+assign pc_op = pc_t'(ps_in);
 
 always_ff @(posedge clk or negedge rst_n)
 begin : pc_regs
@@ -22,10 +22,10 @@ begin : pc_regs
     pc_r = '0;
   else
     begin : synchronous_function
-      case (ps_op)
+      case (pc_op)
         mycpu_pkg::PC_NOP : pc_r = pc_r;
         mycpu_pkg::PC_INC : pc_r += 1;
-        mycpu_pkg::PC_BRA : pc_r += ia_in;
+        mycpu_pkg::PC_BRA : pc_r += $signed(ia_in);
         mycpu_pkg::PC_JMP : pc_r = ra_in;
       endcase
     end : synchronous_function
