@@ -13,7 +13,7 @@ program pc_test
    output logic [15:0] ra_in,
    input logic [15:0]  pc_out
    );
-
+  logic [15:0] test_value;
    initial
      begin : test_program_counter
 
@@ -28,7 +28,6 @@ program pc_test
       @(negedge clk);
 
 	    $info("T2: PC_INC Test");
-      logic [15:0] test_value;
       test_value = pc_out;
 	    ps_in = mycpu_pkg::PC_INC;
 	    @(negedge clk);
