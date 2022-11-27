@@ -36,7 +36,7 @@ program pc_test
       $info("T3: PC_NOP Test");
       ps_in = mycpu_pkg::PC_NOP;
       @(negedge clk);
-      assert (pc_out == test_value)
+      assert (pc_out == test_value + 1)
       else $error("NO-OP test failed");
 
       $info("T4: PC_BRA Test");
@@ -49,6 +49,7 @@ program pc_test
       $info("T5: PC_JMP Test");
       ra_in = 16'h55AA;
       test_value += ra_in;
+      ps_in = mycpu_pkg::PC_JMP;
       @(negedge clk);
       assert (pc_out == test_value)
       else $error("Jump test failed");
