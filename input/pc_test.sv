@@ -53,7 +53,7 @@ program pc_test
 
       $info("T5: PC_JMP Test");
       ra_in = 16'h55AA55AA55;
-      test_value = ra_in + pc_r;
+      test_value += ra_in;
       @(negedge clk);
       assert (pc_op == test_value)
       else $error("Jump test failed");
