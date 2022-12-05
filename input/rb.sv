@@ -13,7 +13,7 @@ module rb
    output logic [15:0] b_out
    );
 
-logic [7:0][15:0] rb_r;
+logic [15:0][15:0] rb_r;
 
 always_ff @( posedge clk or negedge rst_n )
 begin : rb_regs
