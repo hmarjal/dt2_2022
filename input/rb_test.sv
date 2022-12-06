@@ -32,8 +32,6 @@ program rb_test
   begin
     patterns[i] = $urandom;
     rs_in[11:8] = i;
-    rs_in[7:4] = i;
-    rs_in[3:0] = i;
     rw_in = '1;
     d_in = patterns[i];
     @(posedge clk);
@@ -43,6 +41,7 @@ program rb_test
   begin
     d_in = '0;
     rw_in = '0;
+    rs_in[7:4] = i;
     @(posedge clk);
     assert (patterns[i] == a_out)
     else   $error;
@@ -53,6 +52,7 @@ program rb_test
   begin
     d_in = '0;
     rw_in = '0;
+    rs_in[3:0] = i;
     @(posedge clk);
     assert (patterns[i] == b_out)
     else   $error;
