@@ -32,13 +32,15 @@ program rb_test
   begin
     patterns[i] = $urandom;
     rs_in[11:8] = i;
+    rs_in[7:4] = i;
+    rs_in[3:0] = i;
+    rw_in = '1;
     d_in = patterns[i];
     @(posedge clk);
   end
 
   for (int i = 0; i < 16; ++i)
   begin
-    rs_in[7:4] = i;
     d_in = '0;
     rw_in = '0;
     @(posedge clk);
@@ -49,7 +51,6 @@ program rb_test
 
   for (int i = 0; i < 16; ++i)
   begin
-    rs_in[3:0] = i;
     d_in = '0;
     rw_in = '0;
     @(posedge clk);
