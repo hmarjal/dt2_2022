@@ -38,7 +38,7 @@ program rb_test
     @(posedge clk);
   end
 
-  for (unsigned int i = 0; i < 16; ++i)
+  for (int i = 0; i < 16; ++i)
   begin
     d_in = '0;
     rw_in = '0;
@@ -48,7 +48,7 @@ program rb_test
     @(posedge clk);
   end
 
-  for (unsigned int i = 0; i < 16; ++i)
+  for (int i = 0; i < 16; ++i)
   begin
     d_in = '0;
     rw_in = '0;
