@@ -8,8 +8,8 @@
 #set DESIGN_NAME "fu"
 #set DESIGN_NAME "ir"
 #set DESIGN_NAME "pc"
-set DESIGN_NAME "rb"
-#set DESIGN_NAME "cu"
+#set DESIGN_NAME "rb"
+set DESIGN_NAME "cu"
 
 ####################################################################################################
 # Design Parameters
