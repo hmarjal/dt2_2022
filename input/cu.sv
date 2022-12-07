@@ -85,7 +85,7 @@ module cu
               end
             else if (opcode == JMP) ps_out = 2'b11;
             else if ((opcode == HAL) || (opcode == XXL)) ps_out = 2'b00;
-            else ps_out == 2'b01;
+            else ps_out = 2'b01;
             // il_out
             il_out  = '0;
             // rw_out
@@ -97,8 +97,8 @@ module cu
             // mm_out
             mm_out = '0;
             // md_out
-            if ((opcode == LDI) md_out = 2'b01;
-            else if (opcode == IOR)) md_out = 2'b10;
+            if (opcode == LDI) md_out = 2'b01;
+            else if (opcode == IOR) md_out = 2'b10;
             else md_out = 2'b00;
             // mb_out
             if ((opcode == LDI) || (opcode == ADI)) mb_out = '1;
