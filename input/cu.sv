@@ -71,6 +71,11 @@ module cu
           begin
             // ns
             if (opcode == HAL) ns = HLT;
+            else if (opcode == XXL)
+              begin
+                if (z_in == '1) ns = INF;
+                else ns = XXL;
+              end
             else ns = INF;
             // ps_out
             if (opcode == BRZ)
@@ -93,9 +98,11 @@ module cu
                 (opcode == IOW) || (opcode == HAL) || (opcode == XXL)) rw_out = '0;
             else rw_out = '1;
             // rs_out
-            rs_out = ({'0, ins_in[8:6], '0, ins_in[5:3], '0, ins_in[2:0] });
+            if (opcode == XXL) rs_out = 12'b0000_0000_0000; // dest: R0, src R0
+            else rs_out = ({'0, ins_in[8:6], '0, ins_in[5:3], '0, ins_in[2:0] });
             // mm_out
-            mm_out = '0;
+            if ((opcode == XXL) || (opcode == XL0)) mm_out = '1;
+            else mm_out = '0;
             // md_out
             if (opcode == LD) md_out = 2'b01;
             else if (opcode == IOR) md_out = 2'b10;
@@ -105,6 +112,8 @@ module cu
             else mb_out = '0;
             // fs_out
             if (opcode != BRN) fs_out = opcode[3:0];
+            else if (opcode == XXL) fs_out = 4'b1110;
+
             else fs_out = 4'b0000;
             // wen_out
             if ((opcode == IOW) || (opcode == ST)) wen_out = '0;
@@ -113,6 +122,7 @@ module cu
             if ((opcode == IOW) || (opcode == IOR)) iom_out = '1;
             else iom_out = '0;
           end
+
       endcase // st_r
   end : idecoder
 
