@@ -14,7 +14,7 @@ package mycpu_pkg;
                 INF = 4'b0001,
                 EX0 = 4'b0010,
                 HLT = 4'b0100,
-                XXl = 4'b1000
+                XL1 = 4'b1000
                 } cu_state_t;
 
 
