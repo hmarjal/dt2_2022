@@ -26,7 +26,7 @@ module cu
 
    assign opcode = opcode_t'(ins_in[15:9]);
 
-  always_ff @( posedge clk or negedge rst )
+  always_ff @( posedge clk or negedge rst_n )
   begin : st_regs
     if ( rst_n == '0)
     begin
@@ -60,7 +60,7 @@ module cu
             ps_out  = 2'b00;
             il_out  = '1;
             rw_out  = '0;
-            rs_out  = '0
+            rs_out  = '0;
             mm_out  = '0;
             md_out  = 2'b00;
             mb_out  = '0;
@@ -84,20 +84,20 @@ module cu
                 else ps_out = 2'b01;
               end
             else if (opcode == JMP) ps_out = 2'b11;
-            else if ((opcode == HAL) or (opcode == XXL)) ps_out = 2'b00;
+            else if ((opcode == HAL) || (opcode == XXL)) ps_out = 2'b00;
             else ps_out == 2'b01;
             // il_out
             il_out  = '0;
             // rw_out
-            if ((opcode == ST) or (opcode == BRZ) or (opcode == BRN) or (opcode == JMP) or
-                (opcode == IOW) or (opcode == HAL) or (opcode == XXL)) rw_out = '0;
+            if ((opcode == ST) || (opcode == BRZ) || (opcode == BRN) || (opcode == JMP) ||
+                (opcode == IOW) || (opcode == HAL) || (opcode == XXL)) rw_out = '0;
             else rw_out = '1;
             // rs_out
             rs_out = ({'0, ins_in[8:6], '0, ins_in[5:3], '0, ins_in[2:0] });
             // mm_out
             mm_out = '0;
             // md_out
-            if ((opcode == LD) md_out = 2'b01;
+            if ((opcode == LDI) md_out = 2'b01;
             else if (opcode == IOR)) md_out = 2'b10;
             else md_out = 2'b00;
             // mb_out
