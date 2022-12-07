@@ -101,16 +101,16 @@ module cu
             else if (opcode == IOR)) md_out = 2'b10;
             else md_out = 2'b00;
             // mb_out
-            if ((opcode == LDI) or (opcode == ADI)) mb_out = '1;
+            if ((opcode == LDI) || (opcode == ADI)) mb_out = '1;
             else mb_out = '0;
             // fs_out
             if (opcode != BRN) fs_out = opcode[3:0];
             else fs_out = 4'b0000;
             // wen_out
-            if ((opcode == IOW) or (opcode == ST)) wen_out = '0;
+            if ((opcode == IOW) || (opcode == ST)) wen_out = '0;
             else wen_out = '1;
             // iom_out
-            if ((opcode == IOW) or (opcode == IOR)) iom_out = '1;
+            if ((opcode == IOW) || (opcode == IOR)) iom_out = '1;
             else iom_out = '0;
           end
       endcase // st_r
