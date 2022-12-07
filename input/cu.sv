@@ -74,7 +74,7 @@ module cu
             else if (opcode == XXL)
               begin
                 if (z_in == '1) ns = INF;
-                else ns = XXL;
+                else ns = XL1;
               end
             else ns = INF;
             // ps_out
