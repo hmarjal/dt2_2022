@@ -101,7 +101,7 @@ module cu
             if (opcode == XXL) rs_out = 12'b0000_0000_0000; // dest: R0, src R0
             else rs_out = ({'0, ins_in[8:6], '0, ins_in[5:3], '0, ins_in[2:0] });
             // mm_out
-            if ((opcode == XXL) || (opcode == XL0)) mm_out = '1;
+            if (opcode == XXL) mm_out = '1;
             else mm_out = '0;
             // md_out
             if (opcode == LD) md_out = 2'b01;
