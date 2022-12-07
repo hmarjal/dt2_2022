@@ -20,7 +20,7 @@ module cu_tb;
    logic [3:0] 		 fs_out;
    logic 		 wen_out;
    logic 		 iom_out;
-     
+
    cu DUT_INSTANCE (.*);
    cu_test TEST (.*);
 
@@ -32,7 +32,7 @@ module cu_tb;
 	  clk = '0;
 	#CLK_PERIOD;
      end : clock_generator
-
+/*
    initial
      begin : reset_generator
 	rst_n = '0;
@@ -40,12 +40,12 @@ module cu_tb;
 	@(negedge clk);
 	rst_n = '1;
      end : reset_generator
-
+*/
 `ifdef RTL_SIM
- `include "mycpu_svabind.svh"   
-`endif 
-   
-   
+ `include "mycpu_svabind.svh"
+`endif
+
+
 endmodule
 
 `endif
