@@ -97,7 +97,7 @@ module cu
             // mm_out
             mm_out = '0;
             // md_out
-            if (opcode == LDI) md_out = 2'b01;
+            if (opcode == LD) md_out = 2'b01;
             else if (opcode == IOR) md_out = 2'b10;
             else md_out = 2'b00;
             // mb_out
