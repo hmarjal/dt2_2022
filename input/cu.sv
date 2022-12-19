@@ -53,6 +53,7 @@ module cu
             mb_out  = '0;
             wen_out = '1;
             iom_out = '0;
+            fs_out  = 4'b000;
           end
         INF :
           begin
@@ -66,6 +67,7 @@ module cu
             mb_out  = '0;
             wen_out = '1;
             iom_out = '0;
+            fs_out  = 4'b000;
           end
         EX0 :
           begin
@@ -99,7 +101,7 @@ module cu
             else rw_out = '1;
             // rs_out
             if (opcode == XXL) rs_out = 12'b0000_0000_0000; // dest: R0, src R0
-            else rs_out = ({'0, ins_in[8:6], '0, ins_in[5:3], '0, ins_in[2:0] });
+            else rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0] });
             // mm_out
             if (opcode == XXL) mm_out = '1;
             else mm_out = '0;
@@ -111,10 +113,9 @@ module cu
             if ((opcode == LDI) || (opcode == ADI)) mb_out = '1;
             else mb_out = '0;
             // fs_out
-            if (opcode != BRN) fs_out = opcode[3:0];
+            if (opcode == BRN) fs_out = 4'b0000;
             else if (opcode == XXL) fs_out = 4'b1110;
-
-            else fs_out = 4'b0000;
+            else fs_out = opcode[3:0];
             // wen_out
             if ((opcode == IOW) || (opcode == ST)) wen_out = '0;
             else wen_out = '1;
