@@ -47,7 +47,7 @@ module cu
             ps_out  = 2'b00;
             il_out  = '0;
             rw_out  = '0;
-            rs_out  = '0;
+            rs_out  = 12'b0000_0000_0000;
             mm_out  = '0;
             md_out  = 2'b00;
             mb_out  = '0;
@@ -61,7 +61,7 @@ module cu
             ps_out  = 2'b00;
             il_out  = '1;
             rw_out  = '0;
-            rs_out  = '0;
+            rs_out  = 12'b0000_0000_0000;
             mm_out  = '0;
             md_out  = 2'b00;
             mb_out  = '0;
@@ -101,7 +101,7 @@ module cu
             else rw_out = '1;
             // rs_out
             if (opcode == XXL) rs_out = 12'b0000_0000_0000; // dest: R0, src R0
-            else rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0] });
+            else rs_out = {1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0] };
             // mm_out
             if (opcode == XXL) mm_out = '1;
             else mm_out = '0;
