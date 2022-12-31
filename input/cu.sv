@@ -110,7 +110,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0001;
               end
+
               ADD : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -122,6 +124,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0010;
               end
               MUL : begin
                 ns = INF;
@@ -134,6 +137,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0011;
               end
               SRA : begin
                 ns = INF;
@@ -146,7 +150,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0100;
               end
+
               SUB : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -158,7 +164,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0101;
               end
+
               DEC : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -170,7 +178,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0110;
               end
+
               SLA : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -182,7 +192,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0111;
               end
+
               AND : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -194,7 +206,9 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1000;
               end
+
               OR : begin
                 ns = INF;
                 ps_out = 2'b01;
@@ -206,6 +220,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1001;
               end
               XOR : begin
                 ns = INF;
@@ -218,6 +233,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1010;
               end
 
               NOT : begin
@@ -231,6 +247,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1011;
               end
 
               MOVB : begin
@@ -244,6 +261,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1100;
               end
 
               SHR : begin
@@ -257,6 +275,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1101;
               end
 
               SHL : begin
@@ -270,6 +289,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1110;
               end
 
               CLR : begin
@@ -283,6 +303,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1111;
               end
 
               LDI : begin
@@ -296,6 +317,7 @@ module cu
                 mb_out = '1;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b1100;
               end
 
               ADI : begin
@@ -309,6 +331,7 @@ module cu
                 mb_out = '1;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = b'b0010;
               end
 
               LD : begin
@@ -322,6 +345,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = '1; // Don't care
               end
 
               ST : begin
@@ -335,6 +359,7 @@ module cu
                 mb_out = '0;
                 wen_out = '0;
                 iom_out = '0;
+                fs_out = '1; // Don't care
               end
 
               BRZ : begin
@@ -349,6 +374,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0000;
               end
 
               BRN : begin
@@ -363,6 +389,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0000;
               end
 
               JMP : begin
@@ -376,6 +403,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = 4'b0000;
               end
 
               IOR : begin
@@ -389,6 +417,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '1;
+                fs_out = '1; // Don't care
               end
 
               IOW : begin
@@ -402,6 +431,7 @@ module cu
                 mb_out = '0;
                 wen_out = '0;
                 iom_out = '1;
+                fs_out = '1; // Don't care
               end
 
               XXL : begin
@@ -430,6 +460,7 @@ module cu
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '0;
+                fs_out = '1; // Don't care
               end
           endcase // opcode
         end // EX0
