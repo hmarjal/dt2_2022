@@ -331,7 +331,7 @@ module cu
                 mb_out = '1;
                 wen_out = '1;
                 iom_out = '0;
-                fs_out = b'b0010;
+                fs_out = 4'b0010;
               end
 
               LD : begin
