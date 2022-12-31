@@ -62,7 +62,7 @@ module cu
             il_out  = '1;
             rw_out  = '0;
             rs_out  = 12'b0000_0000_0000;
-            mm_out  = '0;
+            mm_out  = '1;
             md_out  = 2'b00;
             mb_out  = '0;
             wen_out = '1;
