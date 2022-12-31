@@ -339,7 +339,7 @@ module cu
 
               BRZ : begin
                 if (z_in == '1) ps_out = 2'b10;
-                else ps_out = ps_out = 2'b01;
+                else ps_out = 2'b01;
                 ns = INF;
                 il_out = '0;
                 rw_out = '0;
@@ -353,7 +353,7 @@ module cu
 
               BRN : begin
                 if (z_in == '1) ps_out = 2'b10;
-                else ps_out = ps_out = 2'b01;
+                else ps_out = 2'b01;
                 ns = INF;
                 il_out = '0;
                 rw_out = '1;
