@@ -378,11 +378,11 @@ module cu
               end
 
               BRN : begin
-                if (z_in == '1) ps_out = 2'b10;
+                if (n_in == '1) ps_out = 2'b10;
                 else ps_out = 2'b01;
                 ns = INF;
                 il_out = '0;
-                rw_out = '1;
+                rw_out = '0;
                 rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
                 mm_out = '0;
                 md_out = 2'b01;
@@ -410,10 +410,10 @@ module cu
                 ps_out = 2'b01;
                 ns = INF;
                 il_out = '0;
-                rw_out = '0;
+                rw_out = '1;
                 rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
                 mm_out = '0;
-                md_out = 2'b00;
+                md_out = 2'b10;
                 mb_out = '0;
                 wen_out = '1;
                 iom_out = '1;
