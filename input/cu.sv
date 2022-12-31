@@ -450,7 +450,7 @@ module cu
               end
 
               HAL : begin
-                ps_out = 2'b01;
+                ps_out = 2'b00;
                 ns = HLT;
                 il_out = '0;
                 rw_out = '0;
