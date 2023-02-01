@@ -41,8 +41,7 @@ module cu
   always_comb
   begin : idecoder
     case (st_r)
-        RST :
-          begin
+        RST : begin
             ns = INF;
             ps_out  = 2'b00;
             il_out  = '0;
@@ -69,21 +68,21 @@ module cu
             iom_out = '0;
             fs_out  = 4'b0000;
           end
-        XL1 :
-          begin
-            // Bit shifting ends if Zero flag is set
-            if (z_in == '1) ns = INF;
-            else ns = EX0;
-            ps_out = 2'b00;
-            il_out = '0;
-            rw_out = '0;
-            rs_out = 12'b0000_0001_0000; // SRC: R0, DST = R1
-            mm_out = '0;
-            mb_out = '0;
-            wen_out = '0;
-            iom_out = '1;
-            fs_out = 4'b1110;
-          end
+
+        // Left shift R0, write to R0
+        XL0 : begin
+          ns = (z_in == '1) ? INF : XL0;
+          ps_out = 2'b00;
+          il_out = '0;
+          rw_out = '0;
+          rs_out = 12'b0000_0000_0000;
+          mm_out = '0; // Don't care
+          mb_out = '0;
+          wen_out = '1;
+          iom_out = '1;
+          fs_out = 4'b0000; // Don't care
+        end
+
         EX0 : begin
             case (opcode)
               MOVA : begin
@@ -435,17 +434,16 @@ module cu
               end
 
               XXL : begin
-                if (z_in == '1) ns = INF;
-                else ns = XL1;
+                ns = XL0;
                 ps_out = 2'b00;
                 il_out = '0;
-                rw_out = '1;
+                rw_out = '0;
                 rs_out = 12'b0000_0000_0000;
                 mm_out = '0;
                 md_out = 2'b00;
                 mb_out = '0;
-                wen_out = '1;
-                iom_out = '1;
+                wen_out = '0;
+                iom_out = '0;
                 fs_out = 4'b1110;
               end
 

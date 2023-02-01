@@ -125,7 +125,8 @@ package cu_pkg;
 		  { { EX0, IOR,        9'bxxxxxxxxx, 'x, 'x}, { INF, 2'b01, '0, '1, 12'b0xxx0xxx0xxx, '0, 2'b10, 'x, 4'bxxxx, '1, '1 } },
 		  { { EX0, IOW,        9'bxxxxxxxxx, 'x, 'x}, { INF, 2'b01, '0, '0, 12'b0xxx0xxx0xxx, '0, 2'bxx, '0, 4'bxxxx, '0, '1 } },
 		  { { EX0, HAL,        9'bxxxxxxxxx, 'x, 'x}, { HLT, 2'b00, '0, '0, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'bxxxx, '1, '0 } },
-		  { { EX0, XXL,        9'bxxxxxxxxx, 'x, 'x}, { XL1, 2'b00, '0, '0, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'bxxxx, '1, '0 } },
+		  { { EX0, XXL,        9'bxxxxxxxxx, '1, 'x}, { INF, 2'b00, '0, '0, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'bxxxx, '1, '0 } },
+      { { EX0, XXL,        9'bxxxxxxxxx, '0, 'x}, { XL0, 2'b00, '0, '1, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'b1110, '1, '0 } },
 		  { { HLT, 7'bxxxxxxx, 9'bxxxxxxxxx, 'x, 'x}, { HLT, 2'b00, '0, '0, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'bxxxx, '1, '0 } }
 		};
 
