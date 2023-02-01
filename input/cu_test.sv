@@ -104,10 +104,10 @@ program cu_test
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	{ ins_in, z_in, n_in } = $urandom;
-	ins_in[15:9] = XXL;
+	ins_in[15:9] = 7'b1111110; // XXL
 	@(posedge clk);
 	@(negedge clk);
-    logic [15:0] test_pattern = 16'b0000_0000_0001;
+    // logic [15:0] test_pattern = 16'b0000_0000_0001;
 	print_st_row(ins_in, z_in, n_in, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out);
 	@(posedge clk);
 	@(posedge clk);
