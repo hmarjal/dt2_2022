@@ -92,7 +92,7 @@ package cu_pkg;
    // Initialized constant array for state table
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   localparam int 	    STATE_TABLE_SIZE = 32;
+   localparam int 	    STATE_TABLE_SIZE = 33;
 
    const st_t st[STATE_TABLE_SIZE] = {
 		  { { RST, 7'bxxxxxxx, 9'bxxxxxxxxx, 'x, 'x}, { INF, 2'b00, '0, '0, 12'b0xxx0xxx0xxx, 'x, 2'bxx, 'x, 4'bxxxx, '1, '0 } },
