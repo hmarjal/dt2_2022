@@ -438,7 +438,7 @@ module cu
 
               XXL : begin
                 ps_out = 2'b00;
-                ns = XL0;                
+                ns = XL0;
                 il_out = '0;
                 rw_out = '0;
                 rs_out = 12'b0000_0000_0000;

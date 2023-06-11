@@ -103,7 +103,9 @@ program cu_test
 	$info("T5: XXL");
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Zero-flag -> ns 
 	{ ins_in, z_in, n_in } = $urandom;
+	z_in = 1'b1;
 	ins_in[15:9] = 7'b1111110; // XXL
 	@(posedge clk);
 	@(negedge clk);
