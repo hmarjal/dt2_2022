@@ -3,9 +3,7 @@ package mycpu_pkg;
 `ifndef SYNTHESIS
    // N = 8 => 0.5 ns + (8 * 0.1 ns) = 1.3 ns
    localparam real CLK_PERIOD = 1.3;
-
    localparam int unsigned mynumber[4] = { 3, 9, 1, 8 };
-
 `endif
 
    // To do (week 6): Control unit state codes
@@ -19,7 +17,6 @@ package mycpu_pkg;
 
 
    // Function unit  function codes
-
   typedef enum  logic [3:0] {
                 FMOVA = 4'b0000,
                 FINC  = 4'b0001,
@@ -40,7 +37,6 @@ package mycpu_pkg;
                 } fs_t;
 
    // Opcodes
-
   typedef enum    logic [6:0] {
                   MOVA = 7'b0000000,
                   INC  = 7'b0000001,
