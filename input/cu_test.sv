@@ -109,13 +109,22 @@ program cu_test
 	ins_in[15:9] = 7'b1111110; // XXL
 	@(posedge clk);
 	@(negedge clk);
-	if (!st_match( { EX0, ins_in, z_in, n_in}, { XL0, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out}))
+	if (!st_match( { EX0, ins_in, z_in, n_in}, { INF, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out}))
 	begin
-		$error("T5: XXL");
+		$error("T5: XXL Zero-flag 1");
 	end
 	print_st_row(ins_in, z_in, n_in, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out);
 	@(posedge clk);
-    //logic [15:0] test_pattern = 16'b0000_0000_0001;
+
+	{ ins_in, z_in, n_in } = $urandom;
+	z_in = 1'b0;
+	ins_in[15:9] = 7'b1111110; // XXL
+	@(posedge clk);
+	@(negedge clk);
+	if (!st_match( { EX0, ins_in, z_in, n_in}, { XL0, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out}))
+	begin
+		$error("T5: XXL Zero-flag 0");
+	end
 	print_st_row(ins_in, z_in, n_in, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out);
 	@(posedge clk);
 	@(posedge clk);
