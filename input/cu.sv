@@ -446,7 +446,7 @@ module cu
                 md_out = 2'b00;
                 mb_out = '0;
                 wen_out = '0;
-                iom_out = '0;
+                iom_out = '1;
                 fs_out = 4'b1110;
               end
 
