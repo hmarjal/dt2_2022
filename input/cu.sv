@@ -468,6 +468,7 @@ module cu
               default: begin
                 ps_out = 2'b00;
                 ns = HLT;
+                il_out = '0;
                 rw_out = '0;
                 rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
                 mm_out = '0;
@@ -483,6 +484,7 @@ module cu
         default: begin
           ps_out = 2'b00;
           ns = HLT;
+          il_out = '0;
           rw_out = '0;
           rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
           mm_out = '0;
