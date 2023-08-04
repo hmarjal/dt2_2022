@@ -83,7 +83,7 @@ module cu
           mb_out = '0;
           wen_out = '1;
           iom_out = '1;
-          fs_out = 4'b0000; // FMOVA
+          fs_out = 4'b1110; // FSHL
         end
 
         EX0 : begin
