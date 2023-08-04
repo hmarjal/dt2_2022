@@ -80,6 +80,7 @@ module cu
           rw_out = '0;
           rs_out = 12'b0000_0000_0000;
           mm_out = '0; // Don't care
+          md_out  = 2'b00;
           mb_out = '0;
           wen_out = '1;
           iom_out = '1;
@@ -463,8 +464,34 @@ module cu
                 iom_out = '0;
                 fs_out = '1; // Don't care
               end
+
+              default: begin
+                ps_out = 2'b00;
+                ns = HLT;
+                rw_out = '0;
+                rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
+                mm_out = '0;
+                md_out = 2'b00;
+                mb_out = '0;
+                wen_out = '1;
+                iom_out = '0;
+                fs_out = '1; // Don't care
+              end
           endcase // opcode
         end // EX0
+
+        default: begin
+          ps_out = 2'b00;
+          ns = HLT;
+          rw_out = '0;
+          rs_out = ({1'b0, ins_in[8:6], 1'b0, ins_in[5:3], 1'b0, ins_in[2:0]});
+          mm_out = '0;
+          md_out = 2'b00;
+          mb_out = '0;
+          wen_out = '1;
+          iom_out = '0;
+          fs_out = 4'b0000; // Don't care
+        end // default        
       endcase // st_r
   end : idecoder
 
