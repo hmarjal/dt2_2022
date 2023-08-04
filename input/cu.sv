@@ -73,8 +73,8 @@ module cu
         XL0 : begin
           // Next state:
           // INF if zero-flag is '1
-          // XL otherwise
-          ns = (z_in == '1) ? INF : XL0;
+          // EX0 otherwise
+          ns = (z_in == '1) ? INF : EX0;
           ps_out = 2'b00;
           il_out = '0;
           rw_out = '0;
@@ -83,7 +83,7 @@ module cu
           mb_out = '0;
           wen_out = '1;
           iom_out = '1;
-          fs_out = 4'b1110; // FSHL
+          fs_out = 4'b0000; // Don't care
         end
 
         EX0 : begin
