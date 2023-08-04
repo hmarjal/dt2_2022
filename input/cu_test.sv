@@ -109,7 +109,7 @@ program cu_test
 	ins_in[15:9] = 7'b1111110; // XXL
 	@(posedge clk);
 	@(negedge clk);
-	if (!st_match( { EX0, ins_in, z_in, n_in}, { INF, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out}))
+	if (!st_match( { EX0, ins_in, z_in, n_in}, { XL0, ps_out, il_out, rw_out, rs_out, mm_out, md_out, mb_out, fs_out, wen_out, iom_out}))
 	begin
 		$error("T5: XXL Zero-flag 1");
 	end
