@@ -96,7 +96,7 @@ module fu
       // FSLA  = 4'b0111, // non-Mano!
       mycpu_pkg::FSLA :
       begin
-        $signed(f_out) = $signed(b_in) <<< 1;
+        f_out = $signed(b_in) <<< 1;
         z_out = b_in == 16'h8000;
         n_out = (b_in > 16'h7FFF);
       end
