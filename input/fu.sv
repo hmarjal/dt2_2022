@@ -54,16 +54,10 @@ module fu
       begin
         // temporary variable for multiplication
         logic [31:0] tmp_total;
-        tmp_total = a_in * b_in;
-        if (tmp_total >= 16'hFFFF)
-          // Saturate to maximum value
-          begin
-            f_out = 16'hFFFF;
-          end
-        else
-          f_out = $signed(a_in) * $signed(b_in);
-          z_out = ((a_in == 0) || (b_in == 0));
-          n_out = (($signed(a_in) < 0) ^ ($signed(b_in) < 0));
+        tmp_total = $signed(a_in) * $signed(b_in);
+        f_out = tmp_total[15:0];
+        z_out = ((a_in == 0) || (b_in == 0));
+        n_out = (($signed(a_in) < 0) ^ ($signed(b_in) < 0));
       end
 
       // 4
