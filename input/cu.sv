@@ -69,7 +69,6 @@ module cu
             fs_out  = 4'b0000;
           end
 
-        // Left shift R0, write to R0
         XL0 : begin
           // Next state:
           // INF if zero-flag is '1
