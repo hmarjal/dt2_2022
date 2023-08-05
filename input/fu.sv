@@ -12,6 +12,9 @@ module fu
     output logic 	          n_out // 1 if MSB is 1 AND value is signed
   );
 
+  // Internal variable for saturated multiplication
+  logic [31:0] tmp_total;
+
   fs_t fs;
   assign fs = fs_t'(fs_in);
 
@@ -52,8 +55,6 @@ module fu
       // FMUL = 4'b0011
       mycpu_pkg::FMUL :
       begin
-        // temporary variable for multiplication
-        logic [31:0] tmp_total;
         tmp_total = $signed(a_in) * $signed(b_in);
         f_out = tmp_total[15:0];
         z_out = ((a_in == 0) || (b_in == 0));
