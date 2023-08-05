@@ -13,7 +13,7 @@ module fu
   );
 
   // Internal variable for saturated multiplication
-  logic [31:0] tmp_total;
+  logic signed [31:0] tmp_total;
 
   fs_t fs;
   assign fs = fs_t'(fs_in);
@@ -56,7 +56,15 @@ module fu
       mycpu_pkg::FMUL :
       begin
         tmp_total = $signed(a_in) * $signed(b_in);
-        f_out = tmp_total[15:0];
+        if (tmp_total > 32'sh0000_7FFF) begin
+          f_out = 16'h7FFF;
+        end
+        else if (tmp_total < 32'sh8000) begin
+          f_out = 16'h8000;
+        end
+        else begin
+          f_out = tmp_total[15:0];
+        end
         z_out = ((a_in == 0) || (b_in == 0));
         n_out = (($signed(a_in) < 0) ^ ($signed(b_in) < 0));
       end
